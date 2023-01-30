@@ -1,0 +1,35 @@
+﻿@page
+@model Demo.PaginasRazor.Pages.DemoModel
+@{
+}
+
+<h1>@Model.Saludo</h1>
+
+<h2>Colores</h2>
+<ul>
+    @foreach (var color in Model.Colores)
+    {
+        <li>@color</li>
+    }
+</ul>
+
+<form method="post">
+    <div class="row">
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group my-3">
+                <input type="submit" value="Saludar" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
